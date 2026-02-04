@@ -1,0 +1,68 @@
+@import "tailwindcss";
+
+:root {
+  --background: #0b0e14;
+  --foreground: #ecf2ff;
+  --accent-1: #7cf2ff;
+  --accent-2: #8c7bff;
+  --accent-3: #ff8bd1;
+  --panel: rgba(15, 20, 30, 0.7);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0b0e14;
+    --foreground: #ecf2ff;
+  }
+}
+
+body {
+  min-height: 100vh;
+  background:
+    radial-gradient(1200px 600px at 80% -10%, rgba(124, 242, 255, 0.22), transparent 70%),
+    radial-gradient(900px 500px at 10% 10%, rgba(140, 123, 255, 0.18), transparent 65%),
+    radial-gradient(700px 600px at 50% 120%, rgba(255, 139, 209, 0.12), transparent 70%),
+    #0b0e14;
+  color: var(--foreground);
+  font-family: var(--font-geist-sans), "Space Grotesk", sans-serif;
+}
+
+.bg-grid {
+  background-image:
+    linear-gradient(to right, rgba(255, 255, 255, 0.06) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.06) 1px, transparent 1px);
+  background-size: 64px 64px;
+  mask-image: radial-gradient(circle at top, black 30%, transparent 70%);
+}
+
+.glass-panel {
+  background: var(--panel);
+  box-shadow:
+    0 24px 60px rgba(5, 8, 16, 0.55),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(16px);
+}
+
+.neon-border {
+  position: relative;
+}
+
+.neon-border::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(130deg, rgba(124, 242, 255, 0.8), rgba(140, 123, 255, 0.6), rgba(255, 139, 209, 0.5));
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
